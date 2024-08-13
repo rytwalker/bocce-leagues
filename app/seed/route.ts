@@ -8,6 +8,7 @@ import {
   users,
   games,
   leagueMemberships,
+  teamSeasons,
 } from "../lib/placeholder-data";
 
 const client = await db.connect();
@@ -124,17 +125,17 @@ async function seedSeasons() {
 }
 
 async function seedMatches() {
-  await client.sql`
-     CREATE TABLE IF NOT EXISTS matches (
-       id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-       season_id UUID REFERENCES seasons(id) ON DELETE CASCADE,
-       team_a_id UUID REFERENCES teams(id) ON DELETE SET NULL,
-       team_b_id UUID REFERENCES teams(id) ON DELETE SET NULL,
-       date DATE,
-       status VARCHAR(255) NOT NULL CHECK (status IN ('not_started', 'in_progress', 'completed')),
-       created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
-     );
-   `;
+  // await client.sql`
+  //    CREATE TABLE IF NOT EXISTS matches (
+  //      id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+  //      season_id UUID REFERENCES seasons(id) ON DELETE CASCADE,
+  //      team_a_id UUID REFERENCES teams(id) ON DELETE SET NULL,
+  //      team_b_id UUID REFERENCES teams(id) ON DELETE SET NULL,
+  //      date DATE,
+  //      status VARCHAR(255) NOT NULL CHECK (status IN ('not_started', 'in_progress', 'completed')),
+  //      created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+  //    );
+  //  `;
 
   const insertedMatches = await Promise.all(
     matches.map(
@@ -199,6 +200,29 @@ async function seedLeagueMemberships() {
   return insertedLeagueMemberships;
 }
 
+async function seedTeamSeasons() {
+  await client.sql`
+     CREATE TABLE IF NOT EXISTS team_seasons (
+       id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+       season_id UUID REFERENCES seasons(id) ON DELETE CASCADE,
+       team_id UUID REFERENCES teams(id) ON DELETE CASCADE,
+       created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+     );
+   `;
+
+  const insertedTeamSeasons = await Promise.all(
+    teamSeasons.map(
+      (season) => client.sql`
+         INSERT INTO team_seasons (season_id, team_id)
+         VALUES (${season.season_id}, ${season.team_id})
+         ON CONFLICT (id) DO NOTHING;
+       `,
+    ),
+  );
+
+  return insertedTeamSeasons;
+}
+
 export async function GET() {
   // try {
   //   await client.sql`BEGIN`;
@@ -208,7 +232,8 @@ export async function GET() {
   //   // await seedSeasons();
   //   // await seedMatches();
   //   // await seedGames();
-  //   await seedLeagueMemberships();
+  //   // await seedLeagueMemberships();
+  //   // await seedTeamSeasons();
   //   await client.sql`COMMIT`;
   //
   //   return Response.json({ message: "Database seeded successfully" });

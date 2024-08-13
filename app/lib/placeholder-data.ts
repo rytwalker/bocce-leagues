@@ -83,28 +83,28 @@ const seasons = [
 
 const matches = [
   {
-    id: "d50c558c-67d9-491e-ab4e-54def1d4558d",
+    id: "bf371ac8-e149-4fb8-ab86-278ddbfeedaa",
     season_id: seasons[0].id,
     team_a_id: teams[0].id,
-    team_b_id: teams[1].id,
-    date: "2024-06-08",
-    status: "completed",
+    team_b_id: teams[5].id,
+    date: "2024-08-30",
+    status: "not_started",
   },
   {
-    id: "6a1ea637-92cc-48e8-85fc-a40d02ec4a94",
+    id: "1f4552e9-26eb-464e-a0ce-ee8830a92d0b",
     season_id: seasons[0].id,
     team_a_id: teams[2].id,
-    team_b_id: teams[3].id,
-    date: "2024-06-08",
-    status: "completed",
+    team_b_id: teams[4].id,
+    date: "2024-08-30",
+    status: "not_started",
   },
   {
-    id: "ab4d2ec0-56b8-40fb-a6ee-2957c65d14db",
+    id: "42b34c71-5038-425e-8205-2aff457807c0",
     season_id: seasons[0].id,
     team_a_id: teams[4].id,
-    team_b_id: teams[5].id,
-    date: "2024-06-08",
-    status: "completed",
+    team_b_id: teams[1].id,
+    date: "2024-08-30",
+    status: "not_started",
   },
 ];
 
@@ -161,4 +161,40 @@ const leagueMemberships = [
   },
 ];
 
-export { users, leagues, teams, seasons, matches, games, leagueMemberships };
+const teamSeasons = [
+  {
+    season_id: seasons[0].id,
+    team_id: teams[0].id,
+  },
+  {
+    season_id: seasons[0].id,
+    team_id: teams[1].id,
+  },
+  {
+    season_id: seasons[0].id,
+    team_id: teams[2].id,
+  },
+  {
+    season_id: seasons[0].id,
+    team_id: teams[3].id,
+  },
+  {
+    season_id: seasons[0].id,
+    team_id: teams[4].id,
+  },
+  {
+    season_id: seasons[0].id,
+    team_id: teams[5].id,
+  },
+];
+
+export {
+  users,
+  leagues,
+  teams,
+  seasons,
+  matches,
+  games,
+  leagueMemberships,
+  teamSeasons,
+};

@@ -24,8 +24,10 @@ export type League = {
 export type Team = {
   id: string;
   name: string;
-  email: string;
   image_url: string;
+  total_games_won: string;
+  total_games_lost: string;
+  total_games_played: string;
 };
 
 export type Season = {
@@ -40,9 +42,9 @@ export type Season = {
 export type Match = {
   id: string;
   season_id: string;
-  team_a_id: string;
-  team_b_id: string;
-  date?: string;
+  team_a: string;
+  team_b: string;
+  date?: Date | string;
   status: "not_started" | "in_progress" | "completed";
 };
 
