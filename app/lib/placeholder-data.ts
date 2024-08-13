@@ -2,146 +2,163 @@
 // https://nextjs.org/learn/dashboard-app/fetching-data
 const users = [
   {
-    id: '410544b2-4001-4271-9855-fec4b6a6442a',
-    name: 'User',
-    email: 'user@nextmail.com',
-    password: '123456',
+    id: "410544b2-4001-4271-9855-fec4b6a6442a",
+    name: "Lebron",
+    email: "user@nextmail.com",
+    password: "password",
+    role: "user",
+  },
+  {
+    id: "bf371ac8-e149-4fb8-ab86-278ddbfeedaa",
+    name: "Ryan",
+    email: "ryan@bocce-leagues.com",
+    password: "password",
+    role: "superadmin",
   },
 ];
 
-const customers = [
+const leagues = [
   {
-    id: 'd6e15727-9fe1-4961-8c5b-ea44a9bd81aa',
-    name: 'Evil Rabbit',
-    email: 'evil@rabbit.com',
-    image_url: '/customers/evil-rabbit.png',
-  },
-  {
-    id: '3958dc9e-712f-4377-85e9-fec4b6a6442a',
-    name: 'Delba de Oliveira',
-    email: 'delba@oliveira.com',
-    image_url: '/customers/delba-de-oliveira.png',
-  },
-  {
-    id: '3958dc9e-742f-4377-85e9-fec4b6a6442a',
-    name: 'Lee Robinson',
-    email: 'lee@robinson.com',
-    image_url: '/customers/lee-robinson.png',
-  },
-  {
-    id: '76d65c26-f784-44a2-ac19-586678f7c2f2',
-    name: 'Michael Novotny',
-    email: 'michael@novotny.com',
-    image_url: '/customers/michael-novotny.png',
-  },
-  {
-    id: 'CC27C14A-0ACF-4F4A-A6C9-D45682C144B9',
-    name: 'Amy Burns',
-    email: 'amy@burns.com',
-    image_url: '/customers/amy-burns.png',
-  },
-  {
-    id: '13D07535-C59E-4157-A011-F8D2EF4E0CBB',
-    name: 'Balazs Orban',
-    email: 'balazs@orban.com',
-    image_url: '/customers/balazs-orban.png',
+    id: "717e0bba-45a9-4047-a9ce-1355607cd78c",
+    name: "Steel Valley Bocce",
+    location: "Steel Valley Brew Works",
+    slug: "steel-valley-brew-works",
+    city: "Boardman",
+    state: "Ohio",
+    zip: "44512",
+    google_place_id: "ChIJFy3Qe3j7M4gRljphmLRgXCQ",
+    created_by: users[0].id,
   },
 ];
 
-const invoices = [
+const teams = [
   {
-    customer_id: customers[0].id,
-    amount: 15795,
-    status: 'pending',
-    date: '2022-12-06',
+    id: "d6e15727-9fe1-4961-8c5b-ea44a9bd81aa",
+    name: "BB4L",
+    league_id: leagues[0].id,
+    image_url: "/customers/evil-rabbit.png",
   },
   {
-    customer_id: customers[1].id,
-    amount: 20348,
-    status: 'pending',
-    date: '2022-11-14',
+    id: "3958dc9e-712f-4377-85e9-fec4b6a6442a",
+    name: "Big Ballzin",
+    league_id: leagues[0].id,
+    image_url: "/customers/delba-de-oliveira.png",
   },
   {
-    customer_id: customers[4].id,
-    amount: 3040,
-    status: 'paid',
-    date: '2022-10-29',
+    id: "3958dc9e-742f-4377-85e9-fec4b6a6442a",
+    name: "New Kids on the Bocce",
+    league_id: leagues[0].id,
+    image_url: "/customers/lee-robinson.png",
   },
   {
-    customer_id: customers[3].id,
-    amount: 44800,
-    status: 'paid',
-    date: '2023-09-10',
+    id: "76d65c26-f784-44a2-ac19-586678f7c2f2",
+    name: "Meatballz",
+    league_id: leagues[0].id,
+    image_url: "/customers/michael-novotny.png",
   },
   {
-    customer_id: customers[5].id,
-    amount: 34577,
-    status: 'pending',
-    date: '2023-08-05',
+    id: "CC27C14A-0ACF-4F4A-A6C9-D45682C144B9",
+    name: "Kathy",
+    league_id: leagues[0].id,
+    image_url: "/customers/amy-burns.png",
   },
   {
-    customer_id: customers[2].id,
-    amount: 54246,
-    status: 'pending',
-    date: '2023-07-16',
-  },
-  {
-    customer_id: customers[0].id,
-    amount: 666,
-    status: 'pending',
-    date: '2023-06-27',
-  },
-  {
-    customer_id: customers[3].id,
-    amount: 32545,
-    status: 'paid',
-    date: '2023-06-09',
-  },
-  {
-    customer_id: customers[4].id,
-    amount: 1250,
-    status: 'paid',
-    date: '2023-06-17',
-  },
-  {
-    customer_id: customers[5].id,
-    amount: 8546,
-    status: 'paid',
-    date: '2023-06-07',
-  },
-  {
-    customer_id: customers[1].id,
-    amount: 500,
-    status: 'paid',
-    date: '2023-08-19',
-  },
-  {
-    customer_id: customers[5].id,
-    amount: 8945,
-    status: 'paid',
-    date: '2023-06-03',
-  },
-  {
-    customer_id: customers[2].id,
-    amount: 1000,
-    status: 'paid',
-    date: '2022-06-05',
+    id: "13D07535-C59E-4157-A011-F8D2EF4E0CBB",
+    name: "Sugar Bear",
+    league_id: leagues[0].id,
+    image_url: "/customers/balazs-orban.png",
   },
 ];
 
-const revenue = [
-  { month: 'Jan', revenue: 2000 },
-  { month: 'Feb', revenue: 1800 },
-  { month: 'Mar', revenue: 2200 },
-  { month: 'Apr', revenue: 2500 },
-  { month: 'May', revenue: 2300 },
-  { month: 'Jun', revenue: 3200 },
-  { month: 'Jul', revenue: 3500 },
-  { month: 'Aug', revenue: 3700 },
-  { month: 'Sep', revenue: 2500 },
-  { month: 'Oct', revenue: 2800 },
-  { month: 'Nov', revenue: 3000 },
-  { month: 'Dec', revenue: 4800 },
+const seasons = [
+  {
+    id: "81eaaa93-6377-4ab7-8d15-f022130b8497",
+    league_id: leagues[0].id,
+    name: "Summer 2024",
+    start_date: "2024-06-08",
+    end_date: null,
+    status: "in_progress",
+  },
 ];
 
-export { users, customers, invoices, revenue };
+const matches = [
+  {
+    id: "d50c558c-67d9-491e-ab4e-54def1d4558d",
+    season_id: seasons[0].id,
+    team_a_id: teams[0].id,
+    team_b_id: teams[1].id,
+    date: "2024-06-08",
+    status: "completed",
+  },
+  {
+    id: "6a1ea637-92cc-48e8-85fc-a40d02ec4a94",
+    season_id: seasons[0].id,
+    team_a_id: teams[2].id,
+    team_b_id: teams[3].id,
+    date: "2024-06-08",
+    status: "completed",
+  },
+  {
+    id: "ab4d2ec0-56b8-40fb-a6ee-2957c65d14db",
+    season_id: seasons[0].id,
+    team_a_id: teams[4].id,
+    team_b_id: teams[5].id,
+    date: "2024-06-08",
+    status: "completed",
+  },
+];
+
+const games = [
+  {
+    match_id: matches[0].id,
+    team_a_score: 15,
+    team_b_score: 7,
+    winning_team_id: teams[0].id,
+    status: "completed",
+  },
+  {
+    match_id: matches[0].id,
+    team_a_score: 15,
+    team_b_score: 9,
+    winning_team_id: teams[0].id,
+    status: "completed",
+  },
+  {
+    match_id: matches[1].id,
+    team_a_score: 15,
+    team_b_score: 3,
+    winning_team_id: teams[2].id,
+    status: "completed",
+  },
+  {
+    match_id: matches[1].id,
+    team_a_score: 8,
+    team_b_score: 15,
+    winning_team_id: teams[3].id,
+    status: "completed",
+  },
+  {
+    match_id: matches[2].id,
+    team_a_score: 15,
+    team_b_score: 9,
+    winning_team_id: teams[4].id,
+    status: "completed",
+  },
+  {
+    match_id: matches[2].id,
+    team_a_score: 13,
+    team_b_score: 15,
+    winning_team_id: teams[5].id,
+    status: "completed",
+  },
+];
+
+const leagueMemberships = [
+  {
+    user_id: users[0].id,
+    league_id: leagues[0].id,
+    role: "league_admin",
+  },
+];
+
+export { users, leagues, teams, seasons, matches, games, leagueMemberships };
