@@ -1,13 +1,19 @@
 import { format } from "date-fns";
 import { lusitana } from "@/app/ui/fonts";
-import { Match } from "@/app/lib/definitions";
+// import { Match } from "@/app/lib/definitions";
+import { fetchUpcomingMatches } from "@/app/lib/data";
 
 // For data visualization UI, check out:
 // https://www.tremor.so/
 // https://www.chartjs.org/
 // https://airbnb.io/visx/
 
-export default async function RevenueChart({ matches }: { matches: Match[] }) {
+export default async function UpcomingMatches({
+  seasonId,
+}: {
+  seasonId: string;
+}) {
+  const matches = await fetchUpcomingMatches(seasonId);
   if (!matches || matches.length === 0) {
     return <p className="mt-4 text-gray-400">No data available.</p>;
   }
