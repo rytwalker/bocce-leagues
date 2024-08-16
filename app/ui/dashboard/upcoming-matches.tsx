@@ -24,12 +24,20 @@ export default async function UpcomingMatches({
         Upcoming Matches
       </h2>
       <div>
-        {matches.map((match) => (
-          <div key={match.id}>
-            {match.team_a} vs. {match.team_b}
-            <div>{format(match.date, "MM-dd-yyyy")}</div>
-          </div>
-        ))}
+        <div className="flex grow flex-col justify-between rounded-xl bg-gray-50 p-4">
+          {matches.map((match) => (
+            <div key={match.id} className="bg-white rounded-xl mb-4 p-4">
+              <div className="flex items-center font-semibold">
+                <div>{match.team_a}</div>{" "}
+                <div className="text-sm text-gray-800 px-2">vs.</div>
+                <div> {match.team_b}</div>
+              </div>
+              <div className="text-gray-500 text-sm">
+                {format(match.date, "MM-dd-yyyy")}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

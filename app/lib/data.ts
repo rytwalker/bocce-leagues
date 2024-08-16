@@ -26,6 +26,32 @@ export async function fetchUpcomingMatches(seasonId: string) {
   }
 }
 
+export async function fetchLeagues() {
+  try {
+    const data = await sql`
+      SELECT * FROM leagues;
+    `;
+
+    return data.rows;
+  } catch (error) {
+    console.error("Database Error:", error);
+    throw new Error("Failed to fetch the teams.");
+  }
+}
+
+export async function fetchLeague(slug: string) {
+  try {
+    const data = await sql`
+    SELECT * FROM leagues WHERE slug = ${slug};
+    `;
+    console.log(data.rows[0]);
+    return data.rows[0];
+  } catch (error) {
+    console.error("Database Error:", error);
+    throw new Error("Failed to fetch the teams.");
+  }
+}
+
 export async function fetchTeams(seasonId: string) {
   try {
     const data = await sql`

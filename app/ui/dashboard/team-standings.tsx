@@ -2,7 +2,6 @@ import { ArrowPathIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
 import Image from "next/image";
 import { lusitana } from "@/app/ui/fonts";
-// import { Team } from "@/app/lib/definitions";
 import { fetchTeams } from "@/app/lib/data";
 
 export default async function TeamStandings({
@@ -17,8 +16,6 @@ export default async function TeamStandings({
         Team Rankings
       </h2>
       <div className="flex grow flex-col justify-between rounded-xl bg-gray-50 p-4">
-        {/* NOTE: Uncomment this code in Chapter 7 */}
-
         <div className="bg-white px-6">
           {teams.map((team, i) => {
             return (
@@ -44,7 +41,6 @@ export default async function TeamStandings({
                       {team.name}
                     </p>
                     <p className="hidden text-sm text-gray-500 sm:block">
-                      0.
                       {(team.total_games_won / team.total_games_played) * 1000}
                     </p>
                   </div>

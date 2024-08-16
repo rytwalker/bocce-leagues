@@ -1,4 +1,4 @@
-import CardWrapper, { Card } from "@/app/ui/dashboard/cards";
+import CardWrapper from "@/app/ui/dashboard/cards";
 import UpcomingMatches from "@/app/ui/dashboard/upcoming-matches";
 import TeamStandings from "@/app/ui/dashboard/team-standings";
 import { lusitana } from "@/app/ui/fonts";
