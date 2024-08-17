@@ -4,6 +4,7 @@ import {
   UserGroupIcon,
   CalendarIcon,
   HomeIcon,
+  PencilSquareIcon,
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -13,6 +14,7 @@ import clsx from "clsx";
 // Depending on the size of the application, this would be stored in a database.
 const links = [
   { name: "Home", href: "/dashboard", icon: HomeIcon },
+  { name: "Matches", href: "/dashboard/matches", icon: PencilSquareIcon },
   {
     name: "Teams",
     href: "/dashboard/teams",
@@ -32,9 +34,9 @@ export default function NavLinks() {
           <Link
             key={link.name}
             className={clsx(
-              "flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-white p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3",
+              "flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-white p-3 text-sm font-medium hover:bg-patina-100 hover:text-patina-600 md:flex-none md:justify-start md:p-2 md:px-3",
               {
-                "primary-100 text-primary-600": pathname === link.href,
+                "patina-100 text-patina-600": pathname === link.href,
               },
             )}
             href={link.href}

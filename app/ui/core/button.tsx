@@ -12,6 +12,7 @@ const buttonStyles = cva(
         transparent:
           "border-off-white-primary border-solid border-2 rounded-xl",
         danger: "bg-red-500 text-white focus:ring-red-500",
+        link: "px-0 py-0 text-gray-900 text-sm shadow-none",
       },
       fullWidth: {
         true: "w-full",

@@ -120,6 +120,56 @@ export async function fetchSeason() {
   }
 }
 
+export async function fetchSeasonById(id: string) {
+  try {
+    const data = await sql`
+      SELECT 
+        m.id AS match_id,
+        m.date,
+        t1.name AS team_a,
+        t2.name AS team_b,
+        m.status,
+        g.id AS game_id,
+        g.team_a_score,
+        g.team_b_score,
+        t3.name AS winning_team
+      FROM 
+        matches m
+      JOIN 
+        teams t1 ON m.team_a_id = t1.id
+      JOIN 
+        teams t2 ON m.team_b_id = t2.id
+      LEFT JOIN 
+        games g ON g.match_id = m.id
+      LEFT JOIN 
+        teams t3 ON g.winning_team_id = t3.id
+      WHERE 
+        m.season_id = ${id}
+      ORDER BY 
+        m.date ASC, g.id ASC;`;
+
+    const schedule = data.rows.reduce((acc, cur) => {
+      if (!acc[cur.date]) {
+        acc[cur.date] = {};
+      }
+
+      if (!acc[cur.date][cur.match_id]) {
+        acc[cur.date][cur.match_id] = [];
+      }
+
+      acc[cur.date][cur.match_id].push(cur);
+
+      return acc;
+    }, {});
+
+    console.log("schedule: ", schedule);
+    return schedule;
+  } catch (error) {
+    console.error("Database Error:", error);
+    throw new Error("Failed to fetch card data.");
+  }
+}
+
 const ITEMS_PER_PAGE = 6;
 export async function fetchFilteredInvoices(
   query: string,

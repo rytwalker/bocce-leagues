@@ -7,11 +7,11 @@ export default function RootLayout({
   return (
     <main>
       <nav className="bg-patina-400">
-        <div className="flex shrink-0 items-end rounded-lg  p-4">
+        <div className="flex shrink-0 items-end rounded-lg p-4">
           <BocceLeaguesLogo />
         </div>
       </nav>
-      <div className="p-4">{children}</div>
+      <div className="p-4 bg-gray-100">{children}</div>
     </main>
   );
 }
