@@ -1,6 +1,7 @@
 import BocceLeaguesLogo from "@/app/ui/bocce-leagues-logo";
 import { koulen } from "@/app/ui/fonts";
 import { Button } from "@/app/ui/core/button";
+import { Link } from "./ui/core/link";
 
 export default function Page() {
   return (
@@ -21,6 +22,11 @@ export default function Page() {
             <Button intent="transparent" fullWidth href="/dashboard">
               Join Now
             </Button>
+            <div className="flex mt-4 justify-center">
+              <Link href="/leagues" intent="gray">
+                Browse Leagues
+              </Link>
+            </div>
           </div>
         </div>
       </header>
